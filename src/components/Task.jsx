@@ -30,7 +30,6 @@ function Task({ itemtask, editTask, changeComplete, showEdit, value, setValue })
           value={value}
           onKeyUp={(e) => {
             if (e.key === 'Enter') {
-              /* console.log(e.target); */
               editTask(itemtask.id);
               e.target.closest('li').classList.remove('editing');
               e.target.closest('li').classList.add('active');
