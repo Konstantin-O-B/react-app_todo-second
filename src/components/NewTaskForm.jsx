@@ -1,17 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-
-function NewTaskForm(props) {
-
-    return ( 
-        <input 
-        className="new-todo" 
-        placeholder="What needs to be done?" 
-        autoFocus 
-        {...props}
-       
-        />
-     );
+function NewTaskForm() {
+  return <input className="new-todo" placeholder="What needs to be done?" />;
 }
 
 export default NewTaskForm;
