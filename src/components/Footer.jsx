@@ -12,6 +12,6 @@ function Footer({arrayTasks, todoFilter, clearCompleted}) {
           <button className="clear-completed" onClick={clearCompleted}>Clear completed</button>
         </footer>
     );
-}
+} 
 
 export default Footer;
