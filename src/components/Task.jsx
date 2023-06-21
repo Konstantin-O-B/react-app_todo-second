@@ -12,7 +12,7 @@ function Task({ itemtask, editTask, changeComplete, showEdit, value, setValue })
       }}
     >
       <div className="view">
-        <input className="toggle" type="checkbox" checked={!!itemtask.status} />
+        <input className="toggle" type="checkbox" checked={!!itemtask.status} readOnly />
         <label>
           <span className="description">{itemtask.task}</span>
           <span className="created">created {result} ago</span>

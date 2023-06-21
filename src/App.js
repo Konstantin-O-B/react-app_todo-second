@@ -78,7 +78,7 @@ function App() {
   /* изменение таски */
   const editTask = (id) => {
     const newArr = arrayTasks.map((currentItem) => {
-      if (currentItem.id === id) {
+      if (currentItem.id === id && value) {
         currentItem.task = value;
       }
       return currentItem;
