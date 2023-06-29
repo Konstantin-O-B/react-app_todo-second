@@ -3,7 +3,7 @@ import React from 'react';
 import TaskFilter from './TaskFilter';
 
 function Footer({ arrayTasks, todoFilter, clearCompleted }) {
-  const activeTasks = arrayTasks.filter((item) => item.status);
+  const activeTasks = arrayTasks.filter((item) => item.status === 'active');
   return (
     <footer className="footer">
       <span className="todo-count">{activeTasks.length} items left</span>

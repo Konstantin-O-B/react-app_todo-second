@@ -2,7 +2,20 @@ import React from 'react';
 
 import Task from './Task';
 
-function TaskList({ filtered, remove, editTask, changeComplete, showEdit, value, setValue }) {
+function TaskList({
+  filtered,
+  remove,
+  editTask,
+  changeComplete,
+  showEdit,
+  value,
+  setValue,
+  deleteTask,
+  clickEdit,
+  status,
+  changeStatus,
+  setEditing,
+}) {
   return (
     <ul className="todo-list">
       {filtered.map((itemTask) => (
@@ -15,6 +28,11 @@ function TaskList({ filtered, remove, editTask, changeComplete, showEdit, value,
           showEdit={showEdit}
           value={value}
           setValue={setValue}
+          deleteTask={deleteTask}
+          clickEdit={clickEdit}
+          status={status}
+          changeStatus={changeStatus}
+          setEditing={setEditing}
         />
       ))}
     </ul>
