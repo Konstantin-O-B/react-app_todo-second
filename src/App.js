@@ -99,7 +99,7 @@ function App() {
   };
 
   const clearCompleted = () => {
-    const clearTasks = [...arrayTasks].filter((item) => item.status);
+    const clearTasks = [...arrayTasks].filter((item) => item.status === 'completed');
     setArrayTasks(clearTasks);
   };
 
