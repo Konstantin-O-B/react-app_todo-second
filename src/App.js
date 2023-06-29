@@ -25,7 +25,6 @@ function App() {
   /*              фильтр таски             */
 
   const todoFilter = (name) => {
-    /* console.log(value); */
     if (name === 'all') {
       setFiltered(arrayTasks);
     } else if (name === 'active') {

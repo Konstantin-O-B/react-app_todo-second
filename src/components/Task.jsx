@@ -1,35 +1,10 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import { formatDistanceToNow } from 'date-fns';
 
-function Task({
-  itemtask,
-  editTask,
-  changeComplete,
-  /* showEdit, */
-  value,
-  setValue,
-  deleteTask,
-  /* clickEdit,
-  /* status, 
-  changeStatus, */
-  setEditing,
-}) {
+function Task({ itemtask, editTask, changeComplete, value, setValue, deleteTask, setEditing }) {
   const result = formatDistanceToNow(new Date(itemtask.id), { includeSeconds: true });
-  /*   const statuses = {
-    active: 'active',
-    completed: 'completed',
-    editing: 'editing',
-  }; */
-
-  // eslint-disable-next-line consistent-return
 
   return (
-    <li
-      className={/* `${itemtask.status ? 'active' : 'completed'} ${showEdit ? 'editing' : 'active'}` */ itemtask.status}
-      /* onClick={(e) => {
-        changeComplete(e, itemtask.id, itemtask);
-      }} */
-    >
+    <li className={itemtask.status}>
       <div className="view">
         <input
           className="toggle"
@@ -44,7 +19,6 @@ function Task({
         <label
           onClick={() => {
             changeComplete(itemtask.id);
-            /* changeStatus(status); */
           }}
         >
           <span className="description">{itemtask.task}</span>
