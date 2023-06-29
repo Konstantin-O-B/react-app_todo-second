@@ -37,9 +37,8 @@ function Task({
           // eslint-disable-next-line no-unneeded-ternary
           checked={itemtask.status === 'completed' ? true : false}
           readOnly
-          onClick={(e) => {
+          onClick={() => {
             changeComplete(itemtask.id);
-            console.log(e);
           }}
         />
         <label
