@@ -15,6 +15,14 @@ function TaskList({
   status,
   changeStatus,
   setEditing,
+  timer,
+  toggleTimer,
+  minutes,
+  seconds,
+  setMinutes,
+  setSeconds,
+  setArrayTasks,
+  arrayTasks,
 }) {
   return (
     <ul className="todo-list">
@@ -33,6 +41,14 @@ function TaskList({
           status={status}
           changeStatus={changeStatus}
           setEditing={setEditing}
+          timer={timer}
+          toggleTimer={toggleTimer}
+          minutes={minutes}
+          seconds={seconds}
+          setMinutes={setMinutes}
+          setSeconds={setSeconds}
+          setArrayTasks={setArrayTasks}
+          arrayTasks={arrayTasks}
         />
       ))}
     </ul>

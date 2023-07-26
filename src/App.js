@@ -6,11 +6,14 @@ import Footer from './components/Footer';
 import './style.css';
 
 function App() {
+  /* const [arrayToLS, setArrayToLS] = useState(''); */
   const [arrayTasks, setArrayTasks] = useState([]);
   const [task, setTask] = useState('');
   const [filtered, setFiltered] = useState([...arrayTasks]);
   const [value, setValue] = useState('');
   const [status, setStatus] = useState('active');
+  const [minutes, setMinutes] = useState('');
+  const [seconds, setSeconds] = useState('');
 
   const statuses = {
     active: 'active',
@@ -19,7 +22,15 @@ function App() {
   };
 
   useEffect(() => {
+    const savedTasks = JSON.parse(localStorage.getItem('mainArray'));
+    if (savedTasks) {
+      setArrayTasks(savedTasks);
+    }
+  }, []);
+
+  useEffect(() => {
     setFiltered([...arrayTasks]);
+    localStorage.setItem('mainArray', JSON.stringify(arrayTasks));
   }, [arrayTasks]);
 
   /*              фильтр таски             */
@@ -76,9 +87,13 @@ function App() {
         id: Date.now(),
         task,
         status: statuses.active,
+        minutes,
+        seconds,
       };
       setArrayTasks([...arrayTasks, newTask]);
       setTask('');
+      setMinutes('');
+      setSeconds('');
     }
   };
 
@@ -107,15 +122,15 @@ function App() {
       <header className="header">
         <h1>todos</h1>
         <NewTaskForm
-          onChange={(e) => {
-            setTask(e.target.value.trimStart());
-          }}
-          onKeyUp={(e) => {
-            if (e.keyCode === 13) {
-              addNewTask();
-            }
-          }}
           value={task}
+          setTask={setTask}
+          addNewTask={addNewTask}
+          setMinutes={setMinutes}
+          setSeconds={setSeconds}
+          minutes={minutes}
+          seconds={seconds}
+          setArrayTasks={setArrayTasks}
+          arrayTasks={arrayTasks}
         />
       </header>
       <section className="main">
@@ -130,6 +145,14 @@ function App() {
           status={status}
           changeStatus={changeStatus}
           setEditing={setEditing}
+          seconds={seconds}
+          minutes={minutes}
+          setMinutes={minutes}
+          setSeconds={seconds}
+          setArrayTasks={setArrayTasks}
+          arrayTasks={arrayTasks}
+          /*           timer={timer}
+          toggleTimer={toggleTimer} */
         />
 
         <Footer arrayTasks={arrayTasks} todoFilter={todoFilter} clearCompleted={clearCompleted} />
