@@ -3,14 +3,6 @@ import { formatDistanceToNow } from 'date-fns';
 
 import Timer from './Timer';
 
-/*   return (
-    <div>
-      <button onClick={toggleTimer}>{!startAt ? 'Start' : 'Pause'}</button>
-      <div>timer {Math.floor(timer / 1000)}</div>
-      <div>countDown {Math.ceil(countDown / 1000)}</div>
-    </div>
-  ); */
-
 function Task({
   itemtask,
   editTask,
@@ -19,12 +11,9 @@ function Task({
   setValue,
   deleteTask,
   setEditing,
+  setUpdateTime,
   setMinutes,
   setSeconds,
-  setArrayTasks,
-  arrayTasks,
-  minutes,
-  seconds,
 }) {
   const result = formatDistanceToNow(new Date(itemtask.id), { includeSeconds: true });
 
@@ -52,15 +41,7 @@ function Task({
             {itemtask.task}
           </span>
           <span className="description">
-            <Timer
-              itemtask={itemtask}
-              setMinutes={setMinutes}
-              setSeconds={setSeconds}
-              setArrayTasks={setArrayTasks}
-              arrayTasks={arrayTasks}
-              minutes={minutes}
-              seconds={seconds}
-            />
+            <Timer itemtask={itemtask} setUpdateTime={setUpdateTime} setMinutes={setMinutes} setSeconds={setSeconds} />
           </span>
           <span className="description">created {result} ago</span>
         </label>

@@ -6,7 +6,6 @@ import Footer from './components/Footer';
 import './style.css';
 
 function App() {
-  /* const [arrayToLS, setArrayToLS] = useState(''); */
   const [arrayTasks, setArrayTasks] = useState([]);
   const [task, setTask] = useState('');
   const [filtered, setFiltered] = useState([...arrayTasks]);
@@ -59,6 +58,18 @@ function App() {
     setArrayTasks(newArr);
   };
 
+  const setUpdateTime = (id, time) => {
+    const seconds = Math.floor((time / 1000) % 60);
+    const minutes = Math.floor((time / (1000 * 60)) % 60);
+    const newArr = arrayTasks.map((item) => {
+      if (item.id === id) {
+        return { ...item, minutes, seconds };
+      }
+      return item;
+    });
+    setArrayTasks(newArr);
+  };
+
   const setEditing = (id) => {
     const newArr = arrayTasks.map((item) => {
       if (item.id === id) {
@@ -102,6 +113,7 @@ function App() {
   };
 
   /* изменение таски */
+
   const editTask = (value, id) => {
     const newArr = arrayTasks.map((currentItem) => {
       if (currentItem.id === id && /\S/.test(value)) {
@@ -151,8 +163,7 @@ function App() {
           setSeconds={seconds}
           setArrayTasks={setArrayTasks}
           arrayTasks={arrayTasks}
-          /*           timer={timer}
-          toggleTimer={toggleTimer} */
+          setUpdateTime={setUpdateTime}
         />
 
         <Footer arrayTasks={arrayTasks} todoFilter={todoFilter} clearCompleted={clearCompleted} />
