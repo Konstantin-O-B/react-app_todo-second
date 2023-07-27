@@ -1,11 +1,9 @@
 import React, { useEffect, useState, useRef, useLayoutEffect } from 'react';
 import { PlayCircleTwoTone, PauseCircleTwoTone } from '@ant-design/icons';
 
-function Timer({ itemtask /* , minutes, seconds, */ /* setArrayTasks, arrayTasks */ /* , setMinutes, setSeconds */ }) {
+function Timer({ itemtask /* , setUpdateTime  , setMinutes, setSeconds */ }) {
   const [startAt, setStartAt] = useState();
   const [initialTimer, setInitialTimer] = useState(0);
-  /*   const [lastMinutes, setLastMinutes] = useState('');
-  const [lastSeconds, setLastSeconds] = useState(''); */
 
   function useNow(updateInterval, enabled, cb) {
     const cbRef = useRef(cb);
@@ -18,11 +16,9 @@ function Timer({ itemtask /* , minutes, seconds, */ /* setArrayTasks, arrayTasks
       }
 
       setNow(Date.now());
-      /* cbRef.current?.(Date.now()); */
 
       const interval = setInterval(() => {
         setNow(Date.now());
-        /* cbRef.current?.(Date.now()); */
       }, updateInterval);
 
       // eslint-disable-next-line consistent-return
@@ -65,10 +61,8 @@ function Timer({ itemtask /* , minutes, seconds, */ /* setArrayTasks, arrayTasks
 
     minutes = minutes < 10 ? `0${minutes}` : minutes;
     seconds = seconds < 10 ? `0${seconds}` : seconds;
-    localStorage.setItem('savedTime', String(duration));
-
-    console.log(localStorage.getItem('seconds'));
-
+    /* localStorage.setItem('savedTime', String(duration));
+    console.log(localStorage.getItem('seconds')); */
     return `${minutes}:${seconds}`;
   }
 
@@ -76,7 +70,13 @@ function Timer({ itemtask /* , minutes, seconds, */ /* setArrayTasks, arrayTasks
 
   return (
     <div className="timer">
-      <PlayCircleTwoTone onClick={toggleTimer} twoToneColor="#cc9a9a" style={{ fontSize: '32px' }} />
+      <PlayCircleTwoTone
+        onClick={() => {
+          toggleTimer();
+        }}
+        twoToneColor="#cc9a9a"
+        style={{ fontSize: '32px' }}
+      />
       <PauseCircleTwoTone onClick={toggleTimer} twoToneColor="#cc9a9a" style={{ fontSize: '32px' }} />
       <span>{itemtask.minutes || itemtask.seconds ? msToTime(countDown) : msToTime(timer)}</span>
     </div>
